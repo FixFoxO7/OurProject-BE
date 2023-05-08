@@ -3,6 +3,7 @@ package com.loginExercise.logic;
 import com.loginExercise.dal.IUsersDal;
 import com.loginExercise.dto.SuccessfulLoginDetails;
 import com.loginExercise.dto.UserLoginData;
+import com.loginExercise.entities.User;
 import com.loginExercise.enums.ErrorType;
 import com.loginExercise.exceptions.ServerException;
 import com.loginExercise.utils.JWTUtils;
@@ -33,5 +34,18 @@ public class UsersLogic {
             } catch (Exception e) {
                 throw new ServerException(ErrorType.GENERAL_ERROR);
             }
+    }
+
+    public void addUser(User user) throws ServerException {
+        validateUser();
+        try{
+            iUsersDal.save(user);
+        }catch (Exception e){
+            throw new ServerException(ErrorType.GENERAL_ERROR);
+        }
+    }
+
+    private void validateUser() {
+
     }
 }

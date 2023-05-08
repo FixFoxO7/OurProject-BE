@@ -24,8 +24,8 @@ public class UsersController {
     public String login(@RequestBody UserLoginData userLoginData) throws ServerException {
         return usersLogic.login(userLoginData);
     }
-//    @PostMapping
-//    public void add(@RequestBody User user) throws ServerException {
-//        usersLogic.addUser(user);
-//    }
+    @PostMapping
+    public void add(@RequestBody User user) throws ServerException {
+        usersLogic.addUser(user);
+    }
 }
