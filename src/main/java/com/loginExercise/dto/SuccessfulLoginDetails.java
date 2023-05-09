@@ -1,4 +1,5 @@
 package com.loginExercise.dto;
+
 public class SuccessfulLoginDetails {
     private Long id;
 
