@@ -23,6 +23,9 @@ public class Message {
     @JoinColumn(name = "receiver")
     private User receiver;
 
+    @Column(name = "isRead",nullable = false)
+    private boolean isRead;
+
     public Message() {
     }
 
@@ -32,6 +35,7 @@ public class Message {
         this.context = context;
         this.sender = sender;
         this.receiver = receiver;
+        this.isRead = false;
     }
 
     public Long getId() {
@@ -72,5 +76,13 @@ public class Message {
 
     public void setReceiver(User receiver) {
         this.receiver = receiver;
+    }
+
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setRead(boolean read) {
+        isRead = read;
     }
 }

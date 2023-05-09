@@ -1,5 +1,6 @@
 package com.loginExercise.controllers;
 
+import com.loginExercise.dto.MessageDto;
 import com.loginExercise.entities.Message;
 import com.loginExercise.exceptions.ServerException;
 import com.loginExercise.logic.MessagesLogic;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/messages")
 public class MessagesController {
 
     private MessagesLogic messagesLogic;
@@ -26,16 +27,20 @@ public class MessagesController {
         messagesLogic.add(authorization,message);
     }
 
-//    @GetMapping("{id}")
-//    public CategoryDto get(@PathVariable("id") long id) throws ServerException {
-//        return categoriesLogic.getById(id);
-//    }
-//
-//    @GetMapping
-//    public List<CategoryDto> getAll() throws ServerException {
-//        return categoriesLogic.getAll();
-//    }
-//
+    @GetMapping("{id}")
+    public MessageDto getById(@PathVariable("id") Long id) throws ServerException {
+        return messagesLogic.getById(id);
+    }
+
+    @GetMapping("/bySender/{senderId}")
+    public List<MessageDto> getAllBySender(@PathVariable("senderId") long senderId) throws ServerException {
+        return messagesLogic.getAllBySender(senderId);
+    }
+
+    @GetMapping("/byReceiver/{receiverId}")
+    public List<MessageDto> getAllByReceiver(@PathVariable("receiverId")long receiverId) throws ServerException {
+        return messagesLogic.getAllByReceiver(receiverId);
+    }
 //    @PutMapping
 //    public void update(@RequestHeader String authorization,@RequestBody Category category) throws ServerException {
 //        categoriesLogic.update(authorization,category);
