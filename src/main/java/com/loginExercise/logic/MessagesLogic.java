@@ -49,20 +49,22 @@ public class MessagesLogic {
         }
     }
 
-    public List<MessageDto> getAllBySender(long senderId) throws ServerException {
+//    public List<MessageDto> getAllBySender(long senderId) throws ServerException {
+//        try{
+//            List<Message>messages = iMessagesDal.findAllBySenderId(senderId);
+//            List<MessageDto>messagesDto = new ArrayList<>();
+//            messages.forEach(
+//                    message -> messagesDto.add(extractDto(message)));
+//                    return messagesDto;
+//        }catch (Exception e){
+//            throw new ServerException(ErrorType.GENERAL_ERROR);
+//        }
+//    }
+
+
+    public List<MessageDto> getAll() throws ServerException {
         try{
-            List<Message>messages = iMessagesDal.findAllBySenderId(senderId);
-            List<MessageDto>messagesDto = new ArrayList<>();
-            messages.forEach(
-                    message -> messagesDto.add(extractDto(message)));
-                    return messagesDto;
-        }catch (Exception e){
-            throw new ServerException(ErrorType.GENERAL_ERROR);
-        }
-    }
-    public List<MessageDto> getAllByReceiver(long receiverId) throws ServerException {
-        try{
-            List<Message>messages = iMessagesDal.findAllByReceiverId(receiverId);
+            List<Message>messages = iMessagesDal.getAll();
             List<MessageDto>messagesDto = new ArrayList<>();
             messages.forEach(
                     message -> messagesDto.add(extractDto(message)));
@@ -71,13 +73,19 @@ public class MessagesLogic {
             throw new ServerException(ErrorType.GENERAL_ERROR);
         }
     }
+//    public void remove(String authorization, long id) throws ServerException {
+//        long userId = JWTUtils.getIdByToken(authorization);
+//        Message message = iMessagesDal.findById(id);
+//        if (userId!=message.getReceiver().getId()){
+//            throw new ServerException(ErrorType.AUTHENTICATION_ERROR);
+//        }
+//    }
     private MessageDto extractDto(Message message) {
         return new MessageDto(
                 message.getId(),
                 message.getContext(),
-                message.getSubject(),
-                message.getSender().getId(),
-                message.getReceiver().getId(),
+                message.getSender().getUserName(),
                 message.isRead());
     }
+
 }

@@ -2,18 +2,14 @@ package com.loginExercise.dto;
 
 public class MessageDto {
     private Long id;
-    private String subject;
     private String context;
-    private Long senderId;
-    private Long receiverId;
+    private String sender;
     private boolean isRead;
 
-    public MessageDto(Long id, String subject, String context, Long senderId, Long receiverId,boolean isRead) {
+    public MessageDto(Long id, String context, String sender,boolean isRead) {
         this.id = id;
-        this.subject = subject;
         this.context = context;
-        this.senderId = senderId;
-        this.receiverId = receiverId;
+        this.sender = sender;
         this.isRead = isRead;
     }
 
@@ -26,14 +22,6 @@ public class MessageDto {
         this.id = id;
     }
 
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
     public String getContext() {
         return context;
     }
@@ -42,21 +30,14 @@ public class MessageDto {
         this.context = context;
     }
 
-    public Long getSenderId() {
-        return senderId;
+    public String getSender() {
+        return sender;
     }
 
-    public void setSenderId(Long senderId) {
-        this.senderId = senderId;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
-    public Long getReceiverId() {
-        return receiverId;
-    }
-
-    public void setReceiverId(Long receiverId) {
-        this.receiverId = receiverId;
-    }
 
     public boolean isRead() {
         return isRead;

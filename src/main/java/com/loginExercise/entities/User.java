@@ -23,11 +23,7 @@ public class User {
     @Column(name = "gender", nullable = false)
     private Gender gender;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "sender")
-    private List<Message> sentMessages;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "receiver")
-    private List<Message> receivedMessages;
     public User() {
     }
 
@@ -37,8 +33,6 @@ public class User {
         this.password = password;
         this.age = age;
         this.gender = gender;
-        this.sentMessages = sentMessages;
-        this.receivedMessages = receivedMessages;
     }
 
     public Long getId() {
@@ -81,19 +75,4 @@ public class User {
         this.gender = gender;
     }
 
-    public List<Message> getSentMessages() {
-        return sentMessages;
-    }
-
-    public void setSentMessages(List<Message> sentMessages) {
-        this.sentMessages = sentMessages;
-    }
-
-    public List<Message> getReceivedMessages() {
-        return receivedMessages;
-    }
-
-    public void setReceivedMessages(List<Message> receivedMessages) {
-        this.receivedMessages = receivedMessages;
-    }
 }
