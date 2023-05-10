@@ -12,9 +12,12 @@ public interface IMessagesDal extends CrudRepository<Message , Long> {
 
     Message findById(long id);
 
-    @Query(value = "SELECT id, subject, context, sender, receiver,is_read FROM messages WHERE sender= :senderId", nativeQuery = true)
+    @Query(value = "SELECT id, context, sender, is_read FROM messages WHERE sender= :senderId", nativeQuery = true)
     List<Message> findAllBySenderId(@Param("senderId") long senderId);
 
-    @Query(value = "SELECT id, subject, context, sender, receiver,is_read FROM messages WHERE receiver= :receiverId", nativeQuery = true)
+    @Query(value = "SELECT id, context, sender, is_read FROM messages WHERE receiver= :receiverId", nativeQuery = true)
     List<Message> findAllByReceiverId(@Param("receiverId")long receiverId);
+
+    @Query(value = "SELECT id, context, sender,is_read FROM messages ", nativeQuery = true)
+    List<Message> getAll();
 }

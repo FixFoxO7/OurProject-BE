@@ -31,16 +31,20 @@ public class MessagesController {
     public MessageDto getById(@PathVariable("id") Long id) throws ServerException {
         return messagesLogic.getById(id);
     }
-
-    @GetMapping("/bySender/{senderId}")
-    public List<MessageDto> getAllBySender(@PathVariable("senderId") long senderId) throws ServerException {
-        return messagesLogic.getAllBySender(senderId);
+    @GetMapping
+    public List<MessageDto> getAll() throws ServerException {
+        return messagesLogic.getAll();
     }
 
-    @GetMapping("/byReceiver/{receiverId}")
-    public List<MessageDto> getAllByReceiver(@PathVariable("receiverId")long receiverId) throws ServerException {
-        return messagesLogic.getAllByReceiver(receiverId);
-    }
+//    @GetMapping("/bySender/{senderId}")
+//    public List<MessageDto> getAllBySender(@PathVariable("senderId") long senderId) throws ServerException {
+//        return messagesLogic.getAllBySender(senderId);
+//    }
+
+//    @GetMapping("/byReceiver/{receiverId}")
+//    public List<MessageDto> getAllByReceiver(@PathVariable("receiverId")long receiverId) throws ServerException {
+//        return messagesLogic.getAllByReceiver(receiverId);
+//    }
 //    @PutMapping
 //    public void update(@RequestHeader String authorization,@RequestBody Category category) throws ServerException {
 //        categoriesLogic.update(authorization,category);
@@ -48,6 +52,6 @@ public class MessagesController {
 //
 //    @DeleteMapping("{id}")
 //    public void delete(@RequestHeader String authorization,@PathVariable("id") long id) throws ServerException {
-//        categoriesLogic.remove(authorization,id);
+//        messagesLogic.remove(authorization,id);
 //    }
 }

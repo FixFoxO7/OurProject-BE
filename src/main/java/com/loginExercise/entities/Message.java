@@ -9,9 +9,6 @@ public class Message {
     @GeneratedValue
     private Long Id;
 
-    @Column(name = "subject")
-    private String subject;
-
     @Column(name = "context")
     private String context;
 
@@ -19,9 +16,6 @@ public class Message {
     @JoinColumn(name = "sender")
     private User sender;
 
-    @ManyToOne
-    @JoinColumn(name = "receiver")
-    private User receiver;
 
     @Column(name = "isRead",nullable = false)
     private boolean isRead;
@@ -29,12 +23,10 @@ public class Message {
     public Message() {
     }
 
-    public Message(Long id, String subject, String context, User sender, User receiver) {
+    public Message(Long id, String context, User sender) {
         Id = id;
-        this.subject = subject;
         this.context = context;
         this.sender = sender;
-        this.receiver = receiver;
         this.isRead = false;
     }
 
@@ -46,13 +38,6 @@ public class Message {
         Id = id;
     }
 
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
 
     public String getContext() {
         return context;
@@ -70,13 +55,6 @@ public class Message {
         this.sender = sender;
     }
 
-    public User getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(User receiver) {
-        this.receiver = receiver;
-    }
 
     public boolean isRead() {
         return isRead;
